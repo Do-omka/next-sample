@@ -1,0 +1,78 @@
+/* stylelint-disable */
+
+@namespace svg 'http://www.w3.org/2000/svg'
+
+@mixin unset
+	all: unset
+	display: revert
+	box-sizing: border-box
+	word-break: break-word
+	background: no-repeat center / cover
+	-webkit-text-fill-color: currentColor // fix: safari text color
+	text-size-adjust: 100% // fix: safari mobile font-size
+
+@mixin reset
+	@include unset
+
+	&::before,
+	&::after
+		@include unset
+		display: inherit
+
+	&::placeholder
+		@include unset
+		display: inherit
+		-webkit-text-security: none // fix: webkit password input placeholder
+
+:not(svg|*)
+	@include reset
+
+
+// decorative tags
+img,
+picture
+	max-width: 100%
+	height: auto
+	display: flex
+	justify-content: center
+	align-items: center
+	text-align: center
+	overflow: hidden
+
+picture img
+	width: 100%
+	height: 100%
+
+img *
+	margin: auto
+
+sup
+	font-size: .5em
+	vertical-align: super
+
+sub
+	font-size: .5em
+	vertical-align: sub
+
+b
+	font-weight: bolder
+
+em
+	font-style: italic
+
+
+// interactive tags
+input,
+textarea
+	cursor: text
+
+a[href],
+button,
+[type= 'button'],
+[type= 'checkbox'],
+label
+	cursor: pointer
+
+// fix: firefox default button focus
+::-moz-focus-inner
+	border: unset

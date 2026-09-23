@@ -1,0 +1,42 @@
+@use './styles/reset';
+@use './styles/grid';
+@use './styles/fonts';
+@use './styles/icons';
+@use './styles/base';
+
+.nowrap {
+	white-space: nowrap;
+}
+
+.heading {
+	color: #3b3b3b;
+	font-size: 36px;
+	font-weight: 700;
+	line-height: 24px;
+	text-transform: uppercase;
+
+	@include g-grid.min(g-grid.$mobile-breakpoint) {
+		font-size: 60px;
+		line-height: 80px;
+	}
+}
+
+.title {
+	color: #3b3b3b;
+	font-size: 36px;
+	font-weight: 700;
+	line-height: 46px;
+	text-transform: uppercase;
+}
+
+.subtitle {
+	color: g-colors.$primary;
+	font-size: 32px;
+	font-weight: 900;
+	line-height: 46px;
+
+	@include g-grid.min(g-grid.$mobile-breakpoint) {
+		font-size: 40px;
+		line-height: 52px;
+	}
+}

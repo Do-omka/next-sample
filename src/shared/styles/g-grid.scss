@@ -1,0 +1,39 @@
+@use 'sass:math';
+
+$mq-breakpoints: (
+	sm: 576px,
+	md: 768px,
+	lg: 992px,
+	xl: 1200px,
+	xxl: 1400px,
+);
+$mobile-breakpoint: lg;
+$container-max-widths: (
+	sm: 540px,
+	md: 720px,
+	lg: 960px,
+	xl: 1140px,
+	xxl: 1284px,
+);
+$gap: 50px;
+$hgap: math.div($gap, 2);
+
+@mixin min($breakpoint) {
+	@each $name, $width in $mq-breakpoints {
+		@if $breakpoint == $name {
+			@media (min-width: $width) {
+				@content;
+			}
+		}
+	}
+}
+
+@mixin max($breakpoint) {
+	@each $name, $width in $mq-breakpoints {
+		@if $breakpoint == $name {
+			@media (max-width: ($width - 1)) {
+				@content;
+			}
+		}
+	}
+}

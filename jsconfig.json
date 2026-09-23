@@ -1,0 +1,17 @@
+{
+	"compilerOptions": {
+		"jsx": "react",
+		"baseUrl": "./src/",
+		"paths": {
+			"@ui/*": ["./shared/ui/*"],
+			"@lib/*": ["./shared/lib/*"],
+			"@api/*": ["./shared/api/*"],
+			"@config/*": ["./shared/config/*"],
+			"@img/*": ["./shared/img/*"],
+			"@icons/*": ["./shared/icons/*"],
+			"@styles/*": ["./shared/styles/*"],
+			"@/*": ["./*"]
+		}
+	},
+	"include": ["./src/", "./app/"]
+}

@@ -1,0 +1,125 @@
+@use '@/widgets/header/ui/vars';
+
+$nav-hgap: 16px;
+
+.root {
+	position: sticky;
+	top: 0;
+	background-color: #fff;
+	color: #000;
+	z-index: 100;
+}
+
+.content {
+	display: flex;
+	align-items: center;
+	height: 72px;
+	padding-top: 24px;
+	padding-bottom: 24px;
+}
+
+.logo {
+	margin-right: auto;
+}
+
+.menuBtn {
+	flex-shrink: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-right: 8px;
+
+	&._open {
+		transform: rotate(-180deg);
+	}
+}
+
+.nav {
+	flex-shrink: 0;
+	display: flex;
+	align-items: center;
+}
+
+.navItem {
+	position: relative;
+}
+
+.navLink {
+	padding-left: 16px;
+	padding-right: 16px;
+}
+
+.navSubList {
+	position: absolute;
+	top: 100%;
+	left: $nav-hgap;
+	display: flex;
+	flex-direction: column;
+	width: 224px;
+	background: #fff;
+	box-shadow: 0 4px 20px 0 rgb(0 0 0 / 10%);
+	opacity: 0;
+	visibility: hidden;
+	z-index: 1;
+}
+
+.navItem:hover > .navSubList {
+	opacity: 1;
+	visibility: visible;
+}
+
+.navSubLink {
+	padding-left: 14px;
+	padding-right: 14px;
+}
+
+.infoBtn {
+	flex-shrink: 0;
+	max-height: 100%;
+	margin-left: $nav-hgap;
+	margin-right: 18px;
+}
+
+.cartBtn {
+	flex-shrink: 0;
+}
+
+@include g-grid.max(vars.$bp) {
+	.content {
+		max-width: none;
+		padding-left: 16px;
+		padding-right: 16px;
+	}
+
+	.logo {
+		max-width: 100px;
+	}
+
+	.nav {
+		display: none;
+	}
+}
+
+@include g-grid.min(vars.$bp) {
+	.content {
+		height: 92px;
+		padding-top: 26px;
+		padding-bottom: 26px;
+	}
+
+	.menuBtn {
+		display: none;
+	}
+
+	.nav {
+		&._hidden {
+			opacity: 0;
+			visibility: hidden;
+			transform: translateY(-100%);
+		}
+	}
+
+	.cartBtn {
+		margin-left: 24px;
+	}
+}

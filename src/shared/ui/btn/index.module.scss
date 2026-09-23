@@ -1,0 +1,63 @@
+$shadow: 0 5px 30px 0 rgb(0 0 0 / 7%);
+
+.root {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	line-height: 24px;
+	font-size: 14px;
+	padding: 10px 16px;
+	text-align: center;
+	border-radius: 3px;
+	transition-timing-function: ease-out;
+
+	&._primary {
+		color: #fff;
+		font-weight: 600;
+		background: g-colors.$primary
+			linear-gradient(
+				32deg,
+				g-colors.$primary 0%,
+				g-colors.$accent 20%,
+				g-colors.$primary 40%,
+				g-colors.$accent 60%,
+				g-colors.$primary 80%,
+				g-colors.$accent 100%
+			)
+			left center / 500% 100%;
+		box-shadow: $shadow;
+
+		&:hover {
+			background-position-x: 50%;
+		}
+
+		&:focus {
+			background-position-x: 100%;
+		}
+	}
+
+	&._secondary {
+		background: #efeeee;
+		color: #3b3b3b;
+		font-weight: 300;
+
+		&:hover,
+		&:focus {
+			background: #ebebeb;
+			box-shadow: $shadow;
+		}
+	}
+
+	&:disabled {
+		background: #f0f0f0;
+		box-shadow: $shadow;
+		color: #c4c4c4;
+		cursor: default;
+	}
+}
+
+.inner {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}

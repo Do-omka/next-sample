@@ -1,0 +1,9 @@
+module.exports = {
+	extends: [
+		'next/core-web-vitals', //
+		'prettier',
+	],
+	rules: {
+		'jsx-a11y/alt-text': [0],
+	},
+}

@@ -1,0 +1,127 @@
+@use '@/widgets/header/ui/vars';
+
+@mixin open {
+	opacity: 1;
+	visibility: visible;
+	transform: none;
+}
+
+@mixin close {
+	opacity: 0;
+	visibility: 0;
+	transform: translateX(-100%);
+}
+
+@mixin preview {
+	@include open;
+
+	transform: translateX(calc(-100% + 118px));
+}
+
+$right-padding: 16px;
+
+.root {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: flex;
+	justify-content: space-between;
+	height: 100vh;
+	background: linear-gradient(
+			90deg,
+			rgb(255 255 255 / 100%) 0%,
+			rgb(255 255 255 / 100%) 50%,
+			rgb(255 255 255 / 0%) 100%
+		)
+		left center / 200% 100%;
+	z-index: 101;
+
+	@include close;
+
+	&::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		right: 0;
+		height: 100%;
+		width: 1px;
+		background-color: #dfdfdf;
+	}
+}
+
+.nav {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 8px;
+	max-width: 240px;
+	padding-top: 24px;
+	padding-bottom: 24px;
+	padding-right: $right-padding;
+	background: linear-gradient(
+		90deg,
+		rgb(255 255 255 / 100%) 0%,
+		rgb(255 255 255 / 0%) 100%
+	);
+	overflow: auto;
+}
+
+.navItem {
+	position: relative;
+	padding-left: 36px;
+	padding-right: 36px;
+
+	&:hover,
+	&:focus {
+		transform: translateX($right-padding);
+	}
+}
+
+.btn {
+	flex-shrink: 0;
+	padding: 54px;
+	color: #373737;
+	font-size: 15px;
+	font-weight: 700;
+	line-height: 24px;
+	text-transform: uppercase;
+}
+
+.btnContent {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	writing-mode: tb-rl;
+	transform: rotate(180deg);
+}
+
+.btnIcon {
+	margin-top: 4px;
+
+	&._open {
+		transform: rotate(-180deg);
+	}
+}
+
+@include g-grid.max(vars.$bp) {
+	.root {
+		&._open {
+			@include open;
+		}
+	}
+}
+
+@include g-grid.min(vars.$bp) {
+	.root {
+		&._desktopPreview {
+			@include preview;
+		}
+
+		&._desktopPreview._open {
+			background-position-x: 100%;
+
+			@include open;
+		}
+	}
+}

@@ -1,0 +1,120 @@
+$gap: 30px;
+
+.root {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	padding-top: $gap;
+	padding-bottom: 36px;
+	margin-top: auto;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	padding-top: 24px;
+}
+
+.formFooter {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	padding-top: 12px;
+}
+
+.nav {
+	padding-top: 84px;
+	padding-bottom: 48px;
+}
+
+.navTitle {
+	grid-area: A;
+	display: flex;
+	align-items: center;
+	font-size: 20px;
+	font-weight: 600;
+	line-height: 24px;
+	margin-bottom: 28px;
+
+	&.main {
+		grid-area: A1;
+	}
+
+	&.interesting {
+		grid-area: A2;
+	}
+
+	&.menu {
+		grid-area: A3;
+	}
+}
+
+.navList {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+
+	&.main {
+		grid-area: B1;
+	}
+
+	&.interesting {
+		grid-area: B2;
+	}
+
+	&.menu {
+		grid-area: B3;
+	}
+}
+
+@include g-grid.max(g-grid.$mobile-breakpoint) {
+	.navList {
+		& + .navTitle {
+			margin-top: 48px;
+		}
+	}
+}
+
+@include g-grid.min(g-grid.$mobile-breakpoint) {
+	.root {
+		padding-top: 60px;
+		padding-bottom: $gap;
+	}
+
+	.form {
+		padding-top: $gap;
+	}
+
+	.formFooter {
+		flex-direction: row;
+		align-items: center;
+		gap: $gap;
+		padding-top: $gap;
+	}
+
+	.formInput {
+		flex-grow: 1;
+	}
+
+	.formSubmit {
+		flex-shrink: 0;
+		width: 222px;
+	}
+
+	.nav {
+		display: grid;
+		grid-template: 1fr auto / repeat(3, 1fr);
+		grid-template-areas:
+			'A1 A2 A3'
+			'B1 B2 B3';
+		column-gap: g-grid.$gap;
+		padding-top: 236px;
+		padding-bottom: 8px;
+	}
+}
+
+@include g-grid.min(xxl) {
+	.nav {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}

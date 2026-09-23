@@ -1,0 +1,21 @@
+.root {
+	position: relative;
+	font-size: 32px;
+}
+
+.badge {
+	position: absolute;
+	top: -4px;
+	right: -2px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 20px;
+	height: 20px;
+	background-color: g-colors.$primary;
+	color: #fff;
+	text-align: center;
+	font-size: 12px;
+	font-weight: 600;
+	border-radius: 50%;
+}

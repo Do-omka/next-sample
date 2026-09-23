@@ -1,0 +1,24 @@
+/* stylelint-disable */
+
+@font-face {
+	font-family: '{{ name }}';
+	src: {{{ fontSrc }}};
+}
+
+.icon {
+	font-family: '{{ name }}';
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	font-size: inherit;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+{{# each codepoints }}
+.icon-{{ @key }}::before {
+	content: '\\{{ codepoint this }}';
+}
+{{/ each }}
